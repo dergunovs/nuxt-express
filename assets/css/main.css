@@ -1,0 +1,21 @@
+* {
+  box-sizing: border-box;
+  font-family: "Tahoma";
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  padding: 16px;
+  text-align: center;
+}
+
+button {
+  margin-top: 16px;
+  padding: 8px;
+  cursor: pointer;
+}
