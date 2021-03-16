@@ -1,7 +1,7 @@
 <template>
   <div class="form">
     <div class="form-element">
-      <label for="url">Адрес страницы Url</label>
+      <label for="url">Адрес страницы URL</label>
       <input type="text" v-model="page.url" id="url" />
     </div>
     <div class="form-element">
@@ -29,11 +29,9 @@
 
 <script>
 export default {
-  name: "PageForm",
-
   // Это переиспользуемый компонент с формой для создания/редактирования/удаления страницы.
   // В зависимости от поступаемых пропсов меняется отображение кнопок.
-  // При редактировании данных в пропсах передаётся контент конкретной страницы.
+  // Если компонент используется для редактирования текущей страницы, то в него передаются её данные.
   props: { page: { type: Object, default: () => ({}) }, action: { type: String } },
 
   // Нам потребуется текущий URL страницы, которые не будет связан с input формы.
@@ -48,15 +46,20 @@ export default {
       this.$axios
         .post(`/api/page`, this.page)
         .then(() => {
+          // После успешного создания новой страницы происходит перенаправление на неё.
           this.$router.push(`/page/${this.page.url}`);
         })
-        .catch((err) => console.log(err.response.data.message));
+        .catch((err) => {
+          // Если страница не создана, то в консоль выводим ошибку из бэкенда.
+          console.log(err.response.data.message);
+        });
     },
     updatePage() {
       // При обновлении текущей страницы нужен исходный URL для запроса в API.
       this.$axios
         .patch(`/api/page/${this.currentUrl}`, this.page)
         .then(() => {
+          // После обновления контента происходит перенаправление на страницу со списком страниц.
           this.$router.push(`/page`);
         })
         .catch((err) => console.log(err.response.data.message));

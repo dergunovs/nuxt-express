@@ -1,5 +1,3 @@
-// Основной файл запуска приложения.
-
 require("dotenv").config();
 
 // Подключаем бэкенд на Express.
@@ -7,8 +5,8 @@ const express = require("express");
 const app = express();
 app.use(express.json());
 
-// Подключаем Mongoose и делаем коннект к базе.
-// Прописывает стандартные настройки Mongoose.
+// Подключаем Mongoose и делаем коннект к базе данных.
+// Прописываем стандартные настройки Mongoose.
 const mongoose = require("mongoose");
 mongoose.Schema.Types.Boolean.convertToFalse.add("");
 mongoose.connect(`mongodb://localhost/${process.env.DATABASE}`, {

@@ -4,7 +4,7 @@
     <div v-html="page.content"></div>
 
     <button @click="showPageForm = true">Редактировать</button>
-    <PageForm v-if="showPageForm" :page="page" action="update" />
+    <LazyPageForm v-if="showPageForm" :page="page" action="update" />
   </main>
 </template>
 
@@ -20,7 +20,9 @@ export default {
     return {
       page: { url: "", h1: "", title: "", description: "", content: "" },
 
-      // При нажатии на кнопку "Редактировать" показывается форма. По-умолчанию она скрыта.
+      // При нажатии на кнопку "Редактировать" показывается форма. По-умолчанию её нет в DOM.
+      // На этой странице форма подключена асинхронно, то есть её нет в чанке этой страницы.
+      // Код асинхронных компонентов Nuxt при сборке вырезает в отдельные js и css файлы.
       showPageForm: false,
     };
   },

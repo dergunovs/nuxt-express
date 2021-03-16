@@ -2,10 +2,7 @@
   <main>
     <h1>Контент главной страницы</h1>
 
-    <div class="content">
-      <p>Шаблон связки Nuxt + Express.</p>
-      <p>База MognoDB, ORM Mongoose.</p>
-    </div>
+    <p>Базовый шаблон для работы Nuxt в качестве middleware для Express.</p>
   </main>
 </template>
 
