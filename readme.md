@@ -8,6 +8,7 @@ Nuxt.js, Express.js, Mongoose.js, MongoDB.
 
 ### Установка
 
+Рекомендуемая среда разработки - VS Code + Prettier.
 Предварительно установите Node.js (https://nodejs.org/en/) и MongoDB (https://www.mongodb.com/try/download/community).
 Затем в консоли пропишите:
 

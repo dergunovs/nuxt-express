@@ -39,10 +39,10 @@ router.post("/", async (req, res) => {
 
 // Обновление контента конкретной страницы.
 router.patch("/:url", getPage, async (req, res) => {
-  Object.assign(res.page, req.body);
   try {
+    Object.assign(res.page, req.body);
     await res.page.save();
-    res.status(200).json(res.page);
+    res.status(200).json({ message: "Страница обновлена" });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -63,7 +63,7 @@ async function getPage(req, res, next) {
   try {
     // Ищем страницу по URL, который указан в строке запроса.
     const page = await Page.findOne({ url: req.params.url }).exec();
-    if (page == null) {
+    if (page === null) {
       // Возвращаем 404 ответ сервера, если страница не найдена.
       return res.status(404).json({ message: "Страницы не существует" });
     } else {
