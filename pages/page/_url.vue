@@ -10,18 +10,24 @@
 
 <script>
 export default {
+  // Получаем конкретную страницу с URL, который берётся из params.
   async asyncData({ $axios, params }) {
     const { data } = await $axios.get(`/api/page/${params.url}`);
     return { page: data };
   },
+
   data() {
     return {
       page: { url: "", h1: "", title: "", description: "", content: "" },
+
+      // При нажатии на кнопку "Редактировать" показывается форма. По-умолчанию она скрыта.
       showPageForm: false,
     };
   },
+
   head() {
     return {
+      // Title и Description конкретной страницы берутся из данных, которые приходят через asyncData.
       title: this.page.title,
       meta: [
         { hid: "description", name: "description", content: this.page.description },

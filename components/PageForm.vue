@@ -29,9 +29,22 @@
 
 <script>
 export default {
+  name: "PageForm",
+
+  // Это переиспользуемый компонент с формой для создания/редактирования/удаления страницы.
+  // В зависимости от поступаемых пропсов меняется отображение кнопок.
+  // При редактировании данных в пропсах передаётся контент конкретной страницы.
   props: { page: { type: Object, default: () => ({}) }, action: { type: String } },
+
+  // Нам потребуется текущий URL страницы, которые не будет связан с input формы.
+  data() {
+    return {
+      currentUrl: "",
+    };
+  },
   methods: {
     createPage() {
+      // Создаём новую страницу.
       this.$axios
         .post(`/api/page`, this.page)
         .then(() => {
@@ -40,36 +53,42 @@ export default {
         .catch((err) => console.log(err.response.data.message));
     },
     updatePage() {
+      // При обновлении текущей страницы нужен исходный URL для запроса в API.
       this.$axios
-        .patch(`/api/page/${this.page.url}`, this.page)
+        .patch(`/api/page/${this.currentUrl}`, this.page)
         .then(() => {
           this.$router.push(`/page`);
         })
         .catch((err) => console.log(err.response.data.message));
     },
     deletePage() {
+      // При удалении страницы также используем текущий URL, а не изменяемый URL в форме.
       this.$axios
-        .delete(`/api/page/${this.page.url}`)
+        .delete(`/api/page/${this.currentUrl}`)
         .then(() => {
           this.$router.push(`/page`);
         })
         .catch((err) => console.log(err.response.data.message));
     },
   },
+  mounted() {
+    // Сохраняем текущий URL на стадии mount компонента.
+    this.currentUrl = this.page.url;
+  },
 };
 </script>
 
 <style>
 .form {
-  width: 100%;
-  max-width: 600px;
-  margin: auto;
+  width: 600px;
 }
+
 .form-element {
   display: flex;
   flex-direction: column;
-  margin: 16px;
+  margin-top: 16px;
 }
+
 .form-element input,
 .form-element textarea {
   margin-top: 4px;
