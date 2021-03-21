@@ -2,28 +2,23 @@
   <main>
     <h1>Контент главной страницы</h1>
 
-    <div class="content">
-      <p>Шаблон связки Nuxt + Express.</p>
-      <p>База MognoDB, ORM Mongoose.</p>
-    </div>
+    <p>Базовый шаблон для работы Nuxt в качестве middleware для Express.</p>
   </main>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      title: "Шаблон Nuxt-Express",
-      description: "Описание контента главной страницы сайта",
-    };
-  },
   head() {
+    // У всех страниц должны быть title и description.
+    let title = "Шаблон Nuxt-Express";
+    let description = "Описание контента главной страницы сайта";
+
     return {
-      title: this.title,
+      title: title,
       meta: [
-        { hid: "description", name: "description", content: this.description },
-        { hid: "og:title", property: "og:title", content: this.title },
-        { hid: "og:description", property: "og:description", content: this.description },
+        { hid: "description", name: "description", content: description },
+        { hid: "og:title", property: "og:title", content: title },
+        { hid: "og:description", property: "og:description", content: description },
       ],
     };
   },

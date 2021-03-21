@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 
 const pageSchema = new mongoose.Schema({
+  // Описываем модель Page. То есть из чего состоит динамическая страница сайта.
+
   url: {
+    // Например, адрес страницы является строкой. Он обязателен и должен быть уникальным.
     type: String,
     unique: true,
     required: true,
@@ -25,6 +28,7 @@ const pageSchema = new mongoose.Schema({
     required: true,
   },
   createdDate: {
+    // У каждой страницы автоматически сохраняется дата создания.
     type: Date,
     default: Date.now,
   },
