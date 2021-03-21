@@ -29,7 +29,7 @@ npm install
 ```bash
 BASE_URL=http://localhost:3000
 PORT=3000
-SECRET=site
+DATABASE=site
 ```
 
 Для production:
@@ -37,7 +37,7 @@ SECRET=site
 ```bash
 BASE_URL=https://site.ru
 PORT=3000
-SECRET=site
+DATABASE=site
 ```
 
 ### Запуск в режиме разработки
