@@ -11,9 +11,13 @@
 <script>
 export default {
   // Получаем конкретную страницу с URL, который берётся из params.
-  async asyncData({ $axios, params }) {
-    const { data } = await $axios.get(`/api/page/${params.url}`);
-    return { page: data };
+  async asyncData({ $axios, params, error }) {
+    try {
+      const page = await $axios.$get(`/api/page/${params.url}`);
+      return { page };
+    } catch (e) {
+      error({ statusCode: e.response.status });
+    }
   },
 
   data() {

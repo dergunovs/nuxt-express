@@ -11,11 +11,11 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.13.1",
-    "core-js": "^3.9.1",
+    "core-js": "^3.11.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "mongoose": "^5.12.1",
-    "nuxt": "^2.15.3"
+    "mongoose": "^5.12.7",
+    "nuxt": "^2.15.4"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
