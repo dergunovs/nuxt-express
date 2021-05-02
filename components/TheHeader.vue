@@ -1,4 +1,4 @@
-<template>
+<template functional>
   <header>
     <div>Шаблон Nuxt-Express</div>
     <nav>

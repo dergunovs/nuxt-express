@@ -11,10 +11,14 @@
 
 <script>
 export default {
-  async asyncData({ $axios }) {
-    // Получаем список динамических страниц сайта из API.
-    const { data } = await $axios.get(`/api/page/`);
-    return { pages: data };
+  // Получаем список динамических страниц сайта из API.
+  async asyncData({ $axios, error }) {
+    try {
+      const pages = await $axios.$get(`/api/page/`);
+      return { pages };
+    } catch (e) {
+      error({ statusCode: e.response.status });
+    }
   },
 
   head() {
