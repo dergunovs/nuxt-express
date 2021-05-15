@@ -39,6 +39,12 @@ BASE_URL=https://site.ru
 PORT=3000
 DATABASE=site
 ```
+### Запуск mongodb в Ubuntu 
+
+sudo chown mongodb /tmp/mongodb-27017.sock
+sudo chgrp mongodb /tmp/mongodb-27017.sock
+sudo service mongod start
+sudo systemctl status mongod
 
 ### Запуск в режиме разработки
 
