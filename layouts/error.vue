@@ -7,7 +7,7 @@
 
 <script>
 export default {
-  // Шаблон страницы с клиентской ошибкой.
+  // Шаблон страницы с ошибкой.
   props: ["error"],
   layout: "default",
 };

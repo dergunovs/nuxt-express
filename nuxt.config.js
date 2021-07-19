@@ -44,15 +44,11 @@ module.exports = {
   //Подключаем общий файл со стилями.
   css: ["@/assets/css/main.css"],
 
-  //Подключаем proxy от axios и прописывам базовый URL для пути /api/
-  axios: { proxy: true },
-  proxy: { "/api/": process.env.BASE_URL },
+  //Прописываем путь к бэку для axios
+  axios: { baseURL: process.env.BASE_URL },
 
   build: {
     // Просим стили вырезать в отдельные файлы. Иначе css будет inline.
     extractCSS: true,
-    babel: {
-      plugins: [["@babel/plugin-proposal-private-methods", { loose: true }]],
-    },
   },
 };

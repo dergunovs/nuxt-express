@@ -8,12 +8,3 @@
     </nav>
   </header>
 </template>
-
-<style>
-header {
-  display: flex;
-  justify-content: space-between;
-  background-color: #eee;
-  padding: 20px;
-}
-</style>
